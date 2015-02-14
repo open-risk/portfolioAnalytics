@@ -19,6 +19,7 @@ Dependencies: scipy, sympy
 * vasicek_lim_q
 
 The Vasicek Base family produces finite pool loss probabilities and measures (EL, UL)
+
 The Vasicek Lim family produces asymptotic pool loss probabities and measures (EL, UL, Quantile)
 
 ### Risk Forum 
