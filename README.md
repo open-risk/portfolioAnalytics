@@ -1,4 +1,4 @@
-portfolio-analytic-tests
+Portfolio Analytics Library
 ========================
 
-Set of semi-analytical functions useful for testing the accuracy of credit portfolio simulation models
+This repository aims to develope a simple python library that provides semi-analytical functions useful for testing the accuracy of credit portfolio simulation models
