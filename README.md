@@ -4,6 +4,10 @@ This repository aims to develop a simple python library that provides semi-analy
 
 The basic formulas are reasonably simple and well known: They underpin the calculation of RWA (risk weighted assets), and in turn required capital, thus ensuring stability for the entire banking systems worldwide
 
+The library provides support for the Monte Carlo testing framework
+
+Dependencies: scipy, sympy
+
 ### Current Functions
 
 * vasicek_base
