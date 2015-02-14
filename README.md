@@ -1,11 +1,10 @@
-Portfolio Analytics Library (PAL)
-=================================
+## Portfolio Analytics Library (PAL)
 
 This repository aims to develop a simple python library that provides semi-analytical functions useful for testing the accuracy of credit portfolio simulation models
 
 The basic formulas are reasonably simple and well known: They underpin the calculation of RWA (risk weighted assets), and in turn required capital, thus ensuring stability for the entire banking systems worldwide
 
-## Current Functions
+### Current Functions
 
 * vasicek_base
 * vasicek_base_el
