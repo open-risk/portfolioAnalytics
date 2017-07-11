@@ -1,18 +1,18 @@
 ## Todo List
 
-### Additional functions
+### Provide additional functions
 
-* Complete the universe of Gaussian models
-** Some interesting special cases (large pool + single exposure)
-** Some tractable inhomogeneous problems
-** More analytic moments (skew, curtosis)
-* Expands to non-Gaussian distributions
+* Complete the universe of analytic solutions for Gaussian models
+** Include some interesting special cases (e.g., large pool + single exposure)
+** Include some tractable inhomogeneous problems
+** Calculate more statistical moments (e.g., skew, curtosis)
+* Expand to non-Gaussian distributions
 
-### Robust implementation
+### Make a more robust implementation
 
 The functions should ultimately be coded to a high standard of robustness:
 * input validation
 * exception handling
 * controlled accuracy 
 
-Idea would be to follow best practise from some of the more mainstream python mathematical libraries
+The idea would be to follow best practises from some of the more mainstream python mathematical libraries
