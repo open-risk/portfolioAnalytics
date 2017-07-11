@@ -8,6 +8,9 @@ The library provides support for the Monte Carlo testing framework
 
 Dependencies: scipy, sympy
 
+## Examples
+Check the jupyter notebook
+
 ### Current Functions
 
 * vasicek_base
