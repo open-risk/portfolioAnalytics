@@ -76,7 +76,7 @@ def vasicek_lim_ul(p, rho):
         phi_cum = stats.norm.cdf(arg, loc=0.0, scale=1.0)
         integrant = phi_den * math.pow(phi_cum,2)
         integral = integral + integrant
-    result =  - p*p + dz * integral
+    result = - p*p + dz * integral
     return math.sqrt(result)      
 
 
