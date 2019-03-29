@@ -26,7 +26,7 @@ The Vasicek Base family produces finite pool loss probabilities and measures (EL
 The Vasicek Lim family produces asymptotic pool loss probabities and measures (EL, UL, Quantile)
 
 ### Risk Manual
-Use the [manual](https://www.openrisk.eu/commons/risk_manual/Main_Page) for documentation of use cases
+Use the [manual](https://www.openriskmanual.org/Main_Page) for documentation of use cases
 
 ### Contributions
 Contributions are welcome. Check the TODO list for ideas of where to take this library next
