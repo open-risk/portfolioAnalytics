@@ -1,4 +1,4 @@
-## Portfolio Analytics Library (PAL)
+## PortfolioAnalytics Library 
 
 This repository is a simple python library that provides semi-analytical functions useful for testing the accuracy of credit portfolio simulation models
 
