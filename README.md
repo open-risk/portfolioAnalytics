@@ -1,6 +1,6 @@
 ## PortfolioAnalytics Library 
 
-This repository is a simple python library that provides semi-analytical functions useful for testing the accuracy of credit portfolio simulation models
+A python library that provides semi-analytical functions useful for testing the accuracy of credit portfolio simulation models
 
 The basic formulas are reasonably simple and well known: They underpin the calculation of RWA (risk weighted assets), and in turn required capital, thus ensuring stability for the entire banking systems worldwide
 
@@ -30,3 +30,26 @@ Use the [manual](https://www.openriskmanual.org/Main_Page) for documentation of 
 
 ### Contributions
 Contributions are welcome. Check the TODO list for ideas of where to take this library next
+
+
+## Portfolio Analytics Library (PAT)
+***
+
+Set of semi-analytical functions for testing the accuracy of credit portfolio simulation models
+
+### Contributions
+***
+
+### Screenshot
+***
+<p align="center">
+  <img src="http://pictures.gabrielecirulli.com/2048-20140309-234100.png" alt="Screenshot"/>
+</p>
+
+
+### Contributing
+***
+
+### License
+***
+
