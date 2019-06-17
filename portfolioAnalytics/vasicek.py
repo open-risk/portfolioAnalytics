@@ -1,8 +1,10 @@
 # encoding: utf-8
 
-# (c) 2014-2018 Open Risk (https://www.openriskmanagement.com)
+"""Implementing the large pool portfolio approximation of Vasicek."""
+
+# (c) 2014-2019 Open Risk (https://www.openriskmanagement.com)
 #
-# TransitionMatrix is licensed under the Apache 2.0 license a copy of which is included
+# portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
 # third-party software included in this distribution. You may not use this file except in
 # compliance with the License.
@@ -17,13 +19,11 @@ import math
 from scipy import stats
 from sympy import binomial
 
-""" Implementing the large pool approximation of Vasicek """
-
 from portfolioAnalytics import settings
 
 
 def vasicek_base(N, k, p, rho):
-    """
+    """Vasicek Base Discrete distribution.
 
     :param N:
     :param k:
@@ -50,10 +50,24 @@ def vasicek_base(N, k, p, rho):
 
 
 def vasicek_base_el(N, p, rho):
+    """Expected Loss for the Vasicek Base distribution.
+
+    :param N:
+    :param p:
+    :param rho:
+    :return:
+    """
     return N * p
 
 
 def vasicek_base_ul(N, p, rho):
+    """Unexpected Loss for the Vasicek Base distribution.
+
+    :param N:
+    :param p:
+    :param rho:
+    :return:
+    """
     zmin = - settings.SCALE
     zmax = settings.SCALE
     grid = settings.GRID_POINTS
@@ -73,6 +87,13 @@ def vasicek_base_ul(N, p, rho):
 
 
 def vasicek_lim(theta, p, rho):
+    """The Large-N limit of the Vasicek Distribution.
+
+    :param theta:
+    :param p:
+    :param rho:
+    :return:
+    """
     a1 = stats.norm.ppf(p, loc=0.0, scale=1.0)
     arg1 = stats.norm.ppf(theta, loc=0.0, scale=1.0)
     arg2 = (math.sqrt(1 - rho * rho) * arg1 - a1) / rho
@@ -81,10 +102,22 @@ def vasicek_lim(theta, p, rho):
 
 
 def vasicek_lim_el(p, rho):
+    """The expected loss of the large n limit of the Vasicek distribution.
+
+    :param p:
+    :param rho:
+    :return:
+    """
     return p
 
 
 def vasicek_lim_ul(p, rho):
+    """The unexpected loss of the large n limit of the Vasicek distribution.
+
+    :param p:
+    :param rho:
+    :return:
+    """
     zmin = - settings.SCALE
     zmax = settings.SCALE
     grid = settings.GRID_POINTS
@@ -103,6 +136,13 @@ def vasicek_lim_ul(p, rho):
 
 
 def vasicek_lim_q(alpha, p, rho):
+    """The quantile of the large-n Limit of the Vasicek distribution.
+
+    :param alpha:
+    :param p:
+    :param rho:
+    :return:
+    """
     a1 = stats.norm.ppf(p, loc=0.0, scale=1.0)
     a2 = stats.norm.ppf(alpha, loc=0.0, scale=1.0)
     arg = (a1 + rho * a2) / math.sqrt(1 - rho * rho)

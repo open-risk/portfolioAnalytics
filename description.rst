@@ -10,35 +10,57 @@ models
 * Mathematical Documentation: `Open Risk Manual <https://www.openriskmanual.org/wiki/Transition_Matrix>`_
 * Training: `Open Risk Academy <https://www.openriskacademy.com/login/index.php>`_
 * Development Website: `Github <https://github.com/open-risk/portfolioAnalytics>`_
-* Discussion: `Gitter <https://gitter.im/open-risk/portfolioAnalytics>`_
+* Discussion: `Discord`_
 
 Functionality
 -------------
 
-You can use portfolioAnalytics to
+You can use portfolioAnalytics to create semi-analytic loss distributions for a variety of stylized credit portfolios
+The library provides semi-analytical functions useful for testing the accuracy of credit portfolio simulation models
+The basic formulas are reasonably simple and well known: They underpin the calculation of RWA (risk weighted assets),
+and in turn required capital, thus ensuring stability for the entire banking systems worldwide
 
-- Estimate transition matrices from historical event data using a variety of estimators
-- Visualize event data and transition matrices
-- Characterise transition matrices
-- Manipulate transition matrices (derive generators, perform comparisons, stress transition rates etc.)
-- Access standardized datasets for testing
+You can also use the library to estimate transition thresholds for stochastic processes
+
 
 **NB: portfolioAnalytics is still in active development. If you encounter issues please raise them in our
 github repository**
 
-Architecture
-------------
 
-* transitioMatrix supports file input/output in json and csv formats
-* it has a powerful API for handling event data (based on pandas)
-* provides intuitive objects for handling transition matrices individually and as sets (based on numpy)
-* supports visualization using matplotlib
+Vasicek Portfolio Models Library
+----------------------------------------------
 
-Links to other open source software
------------------------------------
+Dependencies: scipy, sympy
 
-- Duration based estimators are similar to etm, an R package for estimating empirical transition matrices
-- There is some overlap with lower dimensionality (survival) models like lifelines
+Portfolio Model Examples
+-------------------------
+
+Check the jupyter notebooks and python scripts
+
+Current Functions
+-----------------
+
+* vasicek_base
+* vasicek_base_el
+* vasicek_base_ul
+* vasicek_lim
+* vasicek_lim_el
+* vasicek_lim_ul
+* vasicek_lim_q
+
+The Vasicek Base family produces finite pool loss probabilities and measures (EL, UL)
+
+The Vasicek Lim family produces asymptotic pool loss probabities and measures (EL, UL, Quantile)
+
+Limitations
+-------------
+The portfolioAnalytics library provides a range of powerful modelling functionalities that are
+are of relevance in real credit portfolio management activities. Yet achieving the tractability
+and usability of a semi-analytic calculation suite is not without some tradeoffs. Several
+simplifications are made (extensively documented in the Mathematical Documentation). Those
+simplifications imply that when using the portfolioAnalytics models to assess the
+risk in actual portfolios it is important to assess
+
 
 Installation
 =======================
@@ -49,11 +71,12 @@ Dependencies
 -----------------
 
 - portfolioAnalytics requires Python 3
+- the thresholds module depends on the transitionMatrix library
 - It depends on numerical and data processing Python libraries (Numpy, Scipy, Pandas)
 - The Visualization API depends on Matplotlib
 - The precise dependencies are listed in the requirements.txt file.
 - portfolioAnalytics may work with earlier versions of these packages but this has not been tested
-- the thresholds module depends on the transitionMatrix library
+
 
 From PyPi
 -------------
@@ -103,11 +126,11 @@ File structure
 The distribution has the following structure:
 
 | portfolioAnalytics         The library source code
-|    model.py              Main data structures
-|    estimators            Estimator methods
+|    estimators            Estimator methods (TODO)
 |    utils                 Helper classes and methods
 |    thresholds            Algorithms for calibrating AR(n) process thresholds to input transition rates
-|    portfolio_models      Collection of portfolio analytic solutions
+|    vasicek               Collection of portfolio analytic solutions
+|    creditmetrics         Analytic calculation of variance for credit metrics style models
 | examples                 Usage examples
 | datasets                 Contains a variety of datasets useful for getting started with portfolioAnalytics
 | tests                    Testing suite

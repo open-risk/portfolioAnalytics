@@ -10,9 +10,9 @@
 
 ### Make a more robust implementation
 
+Introduce testing framework
+
 The functions should ultimately be coded to a high standard of robustness:
 * input validation
 * exception handling
-* controlled accuracy 
-
-The idea would be to follow best practises from some of the more mainstream python mathematical libraries
+* controlled accuracy

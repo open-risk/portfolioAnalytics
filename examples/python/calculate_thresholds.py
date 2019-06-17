@@ -1,9 +1,9 @@
 # encoding: utf-8
 
-# (c) 2017-2018 Open Risk, all rights reserved
+# (c) 2014-2019 Open Risk, all rights reserved
 #
-# TransitionMatrix is licensed under the Apache 2.0 license a copy of which is included
-# in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
+# PortfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
+# in the source distribution of PortfolioAnalytics. This is notwithstanding any licenses of
 # third-party software included in this distribution. You may not use this file except in
 # compliance with the License.
 #
@@ -17,38 +17,40 @@
 
 """
 
-import numpy as np
-from scipy.stats import norm
-
 import transitionMatrix as tm
-from datasets import Minimal, Generic
+from transitionMatrix.predefined import Generic
+
 from portfolioAnalytics.thresholds.model import ThresholdSet
 from portfolioAnalytics.thresholds.settings import AR_Model
+from portfolioAnalytics import dataset_path
 
+# Example 1: Typical Annual Credit Rating Transition Matrix
+# Example 2: Monthly Transition Matrix
 
-# Initialize a single period transition matrix
-# Example 1: Generic -> Typical Credit Rating Transition Matrix
-# Example 2: Minimal -> Three state transition matrix
+example = 2
 
-# M = tm.TransitionMatrix(values=Minimal)
-M = tm.TransitionMatrix(values=Generic)
-# Lets take a look at the values
-print("> Load and validate a minimal transition matrix")
-M.print()
-M.validate()
-print("> Valid Input Matrix? ", M.validated)
+if example == 1:
+    # M = tm.TransitionMatrix(values=Minimal)
+    M = tm.TransitionMatrix(values=Generic)
+    # Lets take a look at the values
+    print("> Load and validate a minimal transition matrix")
+    M.print()
+    M.validate()
+    print("> Valid Input Matrix? ", M.validated)
 
-# The size of the rating scale
-Ratings = M.dimension
+    # The size of the rating scale
+    Ratings = M.dimension
 
-# The Default (absorbing state)
-Default = Ratings - 1
+    # The Default (absorbing state)
+    Default = Ratings - 1
 
-# Lets extend the matrix into multi periods
-Periods = 10
-T = tm.TransitionMatrixSet(values=M, periods=Periods, method='Power', temporal_type='Cumulative')
-print("> Extend the matrix into 10 periods")
-
+    # Lets extend the matrix into multi periods
+    Periods = 10
+    T = tm.TransitionMatrixSet(values=M, periods=Periods, method='Power', temporal_type='Cumulative')
+    print("> Extend the matrix into 10 periods")
+elif example == 2:
+    T = tm.TransitionMatrixSet(periods=120, temporal_type='Cumulative', json_file=dataset_path + "generic_monthly.json")
+    Ratings = T.entries[0].dimension
 
 # Initialize a threshold set
 As = ThresholdSet(TMSet=T)
@@ -57,8 +59,9 @@ As = ThresholdSet(TMSet=T)
 print("> Calculate thresholds per initial rating state")
 for ri in range(0, Ratings):
     print("Initial Rating: ", ri)
-    As.fit(AR_Model, ri)
+    As.fit(AR_Model, ri, dt=1.0/12.0)
+As.to_json(json_file="monthly_thresholds.json")
 
 # Display the calculated thresholds
-print("> Display the calculated thresholds")
-As.print()
+# print("> Display the calculated thresholds")
+# As.print()

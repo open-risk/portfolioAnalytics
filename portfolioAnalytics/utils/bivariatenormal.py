@@ -1,27 +1,38 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Aug 22 20:43:33 2014
+# encoding: utf-8
 
-@author: openrisk
-"""
+"""Implementation of the bivariate normal function."""
+
+# (c) 2017-2019 Open Risk (https://www.openriskmanagement.com)
+#
+# portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
+# in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
+# third-party software included in this distribution. You may not use this file except in
+# compliance with the License.
+#
+# Unless required by applicable law or agreed to in writing, software distributed under
+# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+# either express or implied. See the License for the specific language governing permissions and
+# limitations under the License.
+
 
 import math
-import numpy as np
+
 from scipy import stats
-import matplotlib.pyplot as plt
 
 
 # all arguments are double
 
 # wrapper for cumulative normal density
 def N(x):
+    """Standard Normal."""
     return stats.norm.cdf(x, loc=0.0, scale=1.0)
 
 
 def BivariateNormalDistribution(a, b, rho):
+    """Bivariate Normal Distribution."""
     # based on Z. Drezner, "Computation of the bivariate normal integral", Mathematics of Computation 32, pp. 277-279, 1978.
     # uses 8-point Gaussian quadrature
-
 
     Epsilon = 1e-12
 
@@ -56,13 +67,15 @@ def BivariateNormalDistribution(a, b, rho):
 
 
 def BivariateNormalDensity(a, b, rho):
+    """Bivariate Normal Density."""
     ONE_OVER_2PI = 0.15915494309189533576888376337251
     ONE_OVER_SQRT_ONE_MIN_RHO_SQRD = 1. / math.sqrt(1. - rho * rho)
     return ONE_OVER_2PI * ONE_OVER_SQRT_ONE_MIN_RHO_SQRD * math.exp(
-        -0.5 * ONE_OVER_SQRT_ONE_MIN_RHO_SQRD * ONE_OVER_SQRT_ONE_MIN_RHO_SQRD * (a * a + b * b - 2. * rho * a * b));
+        -0.5 * ONE_OVER_SQRT_ONE_MIN_RHO_SQRD * ONE_OVER_SQRT_ONE_MIN_RHO_SQRD * (a * a + b * b - 2. * rho * a * b))
 
 
 def Phi_Sum(a, b, rho):
+    """Phi Sum Helper Function."""
     PI = 3.1415926535897932384626433832795
     SUMNUM = 8
 
@@ -100,6 +113,7 @@ def Phi_Sum(a, b, rho):
 
 
 def rhoc(a, b, rho):
+    """Rho_c Helper Function."""
     x = 1.0
     if (a < 0):
         x = -1.0

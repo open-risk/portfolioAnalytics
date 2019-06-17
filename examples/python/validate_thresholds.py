@@ -1,9 +1,9 @@
 # encoding: utf-8
 
-# (c) 2017-2018 Open Risk, all rights reserved
+# (c) 2014-2019 Open Risk, all rights reserved
 #
-# TransitionMatrix is licensed under the Apache 2.0 license a copy of which is included
-# in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
+# PortfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
+# in the source distribution of PortfolioAnalytics. This is notwithstanding any licenses of
 # third-party software included in this distribution. You may not use this file except in
 # compliance with the License.
 #
@@ -15,44 +15,60 @@
 
 """ Validate a set of calculated thresholds
 
+The intermediate objects required for validation (grids and densities)
+are not stored. They have to be recomputed for validation purposes
+
 """
 
 import transitionMatrix as tm
-from datasets import Generic
+from transitionMatrix.predefined import Generic
 from portfolioAnalytics.thresholds.model import ThresholdSet
 from portfolioAnalytics.thresholds.settings import AR_Model
 from portfolioAnalytics import source_path
 dataset_path = source_path + "datasets/"
 
-# Initialize a single period transition matrix
-# Example 1: Generic -> Typical Credit Rating Transition Matrix
-# Example 2: Minimal -> Three state transition matrix
+# Example 1: Typical Annual Credit Rating Transition Matrix
+# Example 2: Monthly Transition Matrix
 
-M = tm.TransitionMatrix(values=Generic)
-# Lets take a look at the values
-M.print()
-M.validate()
+example = 2
 
-# The size of the rating scale
-Ratings = M.dimension
 
-# The Default (absorbing state)
-Default = Ratings - 1
+if example == 1:
+    M = tm.TransitionMatrix(values=Generic)
+    # Lets take a look at the values
+    M.print()
+    M.validate()
 
-# Lets extend the matrix into multi periods
-Periods = 5
-T = tm.TransitionMatrixSet(values=M, periods=Periods, method='Power', temporal_type='Cumulative')
+    # The size of the rating scale
+    Ratings = M .dimension
 
-# Initialize a threshold set
-As = ThresholdSet(TMSet=T)
+    # The Default (absorbing state)
+    Default = Ratings - 1
 
-print("> Fit Multiperiod Thresholds")
-for ri in range(0, Ratings):
-    print("RI: ", ri)
-    As.fit(AR_Model, ri)
+    # Lets extend the matrix into multi periods
+    Periods = 5
+    T = tm.TransitionMatrixSet(values=M, periods=Periods, method='Power', temporal_type='Cumulative')
 
-print("> Validate Multiperiod Thresholds against Input Transition Matrix Set")
-Q = As.validate(AR_Model)
+    # Initialize a threshold set
+    As = ThresholdSet(TMSet=T)
 
-print("> Save Multiperiod Thresholds in JSON Format")
-As.to_json('generic_thresholds.json')
+    print("> Fit Multiperiod Thresholds")
+    for ri in range(0, Ratings):
+        print("RI: ", ri)
+        As.fit(AR_Model, ri)
+
+    print("> Validate Multiperiod Thresholds against Input Transition Matrix Set")
+    Q = As.validate(AR_Model)
+
+    print("> Save Multiperiod Thresholds in JSON Format")
+    As.to_json('generic_thresholds.json')
+
+elif example == 2:
+    TS = tm.TransitionMatrixSet(json_file=dataset_path + 'generic_monthly.json')
+    As = ThresholdSet(TMSet=TS)
+    for ri in range(0, TS.entries[0].dimension):
+        print("RI: ", ri)
+        As.fit(AR_Model, ri)
+
+    print("> Validate Multiperiod Thresholds against Input Transition Matrix Set")
+    Q = As.validate(AR_Model)

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# (c) 2017-2018 Open Risk, all rights reserved
+# (c) 2017-2019 Open Risk, all rights reserved (https://www.openriskmanagement.com)
 #
-# TransitionMatrix is licensed under the Apache 2.0 license a copy of which is included
+# portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
 # third-party software included in this distribution. You may not use this file except in
 # compliance with the License.
@@ -12,7 +12,7 @@
 # either express or implied. See the License for the specific language governing permissions and
 # limitations under the License.
 
-from portfolioAnalytics.model import vasicek_base
+from portfolioAnalytics.vasicek import vasicek_base
 
 """ Using the portfolio model library to calculate default probabilities in finite 
 portfolio with N credits - Calculate probability of k losses

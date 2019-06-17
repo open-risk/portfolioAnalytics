@@ -1,8 +1,10 @@
 # encoding: utf-8
 
-# (c) 2017-2018 Open Risk
+"""This module is part of the portfolioAnalytics package."""
+
+# (c) 2017-2019 Open Risk (https://www.openriskmanagement.com)
 #
-# TransitionMatrix is licensed under the Apache 2.0 license a copy of which is included
+# portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
 # third-party software included in this distribution. You may not use this file except in
 # compliance with the License.
@@ -14,6 +16,7 @@
 
 import json
 
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import numpy.ma as ma
@@ -23,15 +26,16 @@ from scipy.stats import norm
 from transitionMatrix.model import TransitionMatrixSet
 
 from portfolioAnalytics.thresholds import settings
+from portfolioAnalytics.thresholds.settings import VERBOSE, GRAPHS
 
-""" This module is part of the portfolioAnalytics package.
+# choose matplotlib backend
 
-"""
-
+matplotlib.use("agg")
 
 # Calculate survival distribution function at period k and point x
 # Convolution of last period survival function with process one step transition density
 def integrate_g(ff, x, an, dx, dt, mu, phi_1):
+    """Integrate G."""
     dt_root = np.sqrt(dt)
     offset = mu + phi_1 * x
     arg = (an - offset) / dt_root
@@ -43,6 +47,7 @@ def integrate_g(ff, x, an, dx, dt, mu, phi_1):
 
 # Obtain survival density at point x by integrating over grid
 def integrate_f(ff, x, an, dx, dt, mu, phi_1):
+    """Integrate F."""
     dt_root = np.sqrt(dt)
     offset = mu + phi_1 * x
     arg = (an - offset) / dt_root
@@ -53,13 +58,13 @@ def integrate_f(ff, x, an, dx, dt, mu, phi_1):
 
 
 class ThresholdSet(object):
-    """  The Threshold set object stores a multiperiod migration/default threshold structure as a numpy array
+    """The Threshold set object stores a multiperiod migration/default threshold structure as a numpy array.
 
     .. Todo:: Separate integration method from transition data
     """
 
     def __init__(self, ratings=None, periods=None, TMSet=None, json_file=None):
-        """ Create a new threshold set. Different options for initialization are:
+        """Create a new threshold set. Different options for initialization are:
 
         * providing shape values (Ratings, Periods)
         * providing a transition matrix set
@@ -114,8 +119,8 @@ class ThresholdSet(object):
         else:
             raise ValueError
 
-    def fit(self, AR_Model, ri):
-        """ Fit Thresholds given autoregressive model and transition matrix given the initial state ri
+    def fit(self, AR_Model, ri, dt=1.0):
+        """Fit Thresholds given autoregressive model and transition matrix given the initial state ri
 
         .. note:: The threshold corresponding to the starting rating is set by convention to NaN.
         The threshold corresponding to a defaulted state is set by convention to - Infinity
@@ -124,14 +129,13 @@ class ThresholdSet(object):
 
         """
 
+        self.periods = 2
+
         # Process parameters
         mu = AR_Model['Mu']
         phi_1 = AR_Model['Phi'][0]
         x_0 = AR_Model['Initial Conditions'][0]
 
-        # Temporal scale
-        # TODO validate arbitrary timestep
-        dt = 1.0
         dt_root = np.sqrt(dt)
         pi = 4.0 * np.arctan(1.0)
         sqrt_two_pi = np.sqrt(2. * pi)
@@ -142,6 +146,8 @@ class ThresholdSet(object):
         Default = self.ratings - 1
 
         if ri == Default:
+
+            # Transition Threshold for defaulted state (ALL PERIODS)
             # Absorbing states don't have meaningful transition thresholds
             # By convention assigned minus infinity
 
@@ -151,10 +157,11 @@ class ThresholdSet(object):
                         self.A[ri, rf, k] = np.NaN
                     else:
                         self.A[ri, rf, k] = - np.Inf
+
         else:
 
             #
-            # Transition Thresholds for the First Period
+            # ========= Transition Thresholds for the First Period ===========
             #
 
             k = 0
@@ -196,11 +203,38 @@ class ThresholdSet(object):
             # Survival Density for the First Period
             self.f[:, k, ri] = norm.pdf(arg) / dt_root
 
-            # plt.plot(self.grid[:, 0, 0], self.f[:, 0, 0])
-            # plt.plot([self.A[ri, Default, k], self.A[ri, Default, k]], [0, 0.2])
-            # plt.plot([self.A[ri, Default - 1, k], self.A[ri, Default - 1, k]], [0, 0.2])
+            if VERBOSE:
+                print('------------------------------------------------------------------------------')
+                print('Transition Rates From Initial Rating State', ri)
+                print('------------------------------------------------------------------------------')
+                for rf in range(0, self.ratings):
+                    print('To ->', end=' ')
+                    print('{0:3}'.format(rf), end='')
+                    print(' | ', end='')
+                    for k in range(0, self.periods):
+                        val = self.T.entries[k][ri, rf]
+                        print('{:06.5f}'.format(val), end=' ')
+                    print('')
 
-            # ========== PERIOD LOOP =========
+                k = 0
+                print('------------------------------------------------------------------------------')
+                print('Grid Size :', self.grid_size)
+                print('Max Grid Point:', self.grid_max[k])
+                print('D Grid Point :', self.A[ri, Default, k])
+                print('Step :', self.grid_step[k, ri])
+                print('X :', self.grid[:4, k, ri])
+                print('f :', self.f[:4, k, ri])
+
+            if GRAPHS:
+                print("First Period Graph")
+                plt.plot(self.grid[:, 0, ri], self.f[:, 0, ri])
+                plt.plot([self.A[ri, Default, 0], self.A[ri, Default, 0]], [0, 0.2])
+                plt.plot([self.A[ri, Default - 1, 0], self.A[ri, Default - 1, 0]], [0, 0.2])
+                plt.show()
+
+            #
+            # ========== PERIOD LOOP for subsequent threshold families =========
+            #
 
             for k in range(1, self.periods):
 
@@ -232,7 +266,7 @@ class ThresholdSet(object):
 
                 # Store Default Threshold for period k
                 self.A[ri, rf, k] = anp1
-
+                print("Period : ", k, "Initial: ", ri, "Final: ", rf, "Value: ", anp1)
                 # Compute the cumulative transition probability from ri -> rf
                 # Conditional on survival till k-1
 
@@ -251,10 +285,19 @@ class ThresholdSet(object):
 
                 for i in range(0, self.grid_size):
                     F = np.exp(
-                        -(self.grid[i, k, ri] - offset) * (
-                                self.grid[i, k, ri] - offset) / 2. / dt) / sqrt_two_pi / dt_root
+                        -(self.grid[i, k, ri] - offset) * (self.grid[i, k, ri] - offset) / 2. / dt) \
+                        / sqrt_two_pi / dt_root
                     integrant = np.multiply(self.f[:, k - 1, ri], F)
                     self.f[i, k, ri] = np.trapz(integrant, self.grid[:, k - 1, ri], self.grid_step[k - 1, ri])
+
+                if VERBOSE:
+                    print('------------------------------------------------------------------------------')
+                    print('Period ', k)
+                    print('Max Grid Point:', self.grid_max[k])
+                    print('D Grid Point :', self.A[ri, Default, k])
+                    print('Step :', self.grid_step[k, ri])
+                    print('X :', self.grid[:4, k, ri])
+                    print('f :', self.f[:4, k, ri])
 
                 # for all final ratings starting from Default - 1 and moving to highest rating (0)
                 # Compute migration transition thresholds
@@ -288,22 +331,44 @@ class ThresholdSet(object):
 
                         self.A[ri, rf, k] = self.grid[c, k, ri]
 
-                # plt.plot(self.grid[:, 1, 0], self.f[:, 1, 0])
-                # plt.plot([self.A[ri, Default, k], self.A[ri, Default, k]], [0, 0.2])
-                # plt.plot([self.A[ri, Default - 1, k], self.A[ri, Default - 1, k]], [0, 0.2])
-                # plt.title("Density")
-                # plt.show()
+                if VERBOSE:
+                    print('------------------------------------------------------------------------------')
+                    print('Thresholds For Initial Rating State', ri)
+                    print('------------------------------------------------------------------------------')
+                    for rf in range(0, self.ratings):
+                        print('To ->', end=' ')
+                        print('{0:3}'.format(rf), end='')
+                        print(' | ', end='')
+                        for k in range(0, self.periods):
+                            val = self.A[ri, rf, k]
+                            if np.isnan(val):
+                                print('{:8s}'.format('NaN'), end=' ')
+                            elif np.isinf(val):
+                                print('{:8s}'.format('Inf'), end=' ')
+                            else:
+                                print('{:+6.5f}'.format(val), end=' ')
+                        print('')
+
+                if GRAPHS:
+                    plt.plot(self.grid[:, k, ri], self.f[:, k, ri])
+                    plt.plot([self.A[ri, Default, k], self.A[ri, Default, k]], [0, 0.2])
+                    plt.plot([self.A[ri, Default - 1, k], self.A[ri, Default - 1, k]], [0, 0.2])
+                    plt.title("Density")
+                    plt.show()
 
         return
 
     def validate(self, AR_Model):
-        """ Validate calculated Thresholds given autoregressive model
+        """Validate calculated Thresholds given autoregressive model
+
         The comparison is accomplished by producing the implied transition matrix and setting against
         the input set
 
         .. Todo:: Automate the comparison when a new set is produced
 
         """
+
+        self.periods = 2
 
         # Initialize a transition Matrix set container to hold the results
         Q = tm.TransitionMatrixSet(dimension=self.ratings, periods=self.periods, temporal_type='Cumulative')
@@ -398,6 +463,7 @@ class ThresholdSet(object):
         return Q
 
     def to_json(self, json_file=None, accuracy=5):
+        """Convert to JSON."""
         hold = []
         for k in range(self.A.shape[2]):
             # Matrix of k-th period
@@ -414,12 +480,15 @@ class ThresholdSet(object):
         return serialized
 
     def from_json(self, json_file):
+        """Read from JSON."""
         values = json.load(open(json_file))
         # Infer number of periods
         self.periods = len(values)
         # Infer number of rating states
         entry = values[0]
         self.ratings = len(entry)
+
+        # Initialize thresholds
         A = np.zeros(shape=(self.ratings, self.ratings, self.periods), dtype='double')
         for k in range(0, self.periods):
             entry = values[k]
@@ -427,7 +496,7 @@ class ThresholdSet(object):
         self.A = A
 
     def print(self, format_type='Standard', accuracy=2):
-        """ Pretty print a threshold matrix set
+        """Pretty print a threshold matrix set
 
         :param format_type: formating options (Standard, Percent)
         :type format_type: str
@@ -449,6 +518,7 @@ class ThresholdSet(object):
             print('')
 
     def plot(self, rating):
+        """Plot."""
         lines = []
         ri = rating
         for rf in range(0, self.ratings):
@@ -470,9 +540,9 @@ class ThresholdSet(object):
 
 
 class ConditionalTransitionMatrix(TransitionMatrixSet):
-    """  The _`ConditionalTransitionMatrix` object stores a family of `TransitionMatrix`_ objects as a time ordered list.
-    Its main functionality is to allow conditioning (stressing) the values in accordance with a predefined model
+    """The _`ConditionalTransitionMatrix` object stores a family of TransitionMatrix objects as a time ordered list.
 
+    Its main functionality is to allow conditioning (stressing) the values in accordance with a predefined model
 
     """
 
@@ -488,7 +558,7 @@ class ConditionalTransitionMatrix(TransitionMatrixSet):
 
     # Override the print method
     def print_matrix(self, format_type='Standard', accuracy=2, state=None):
-        """ Pretty print a threshold matrix set
+        """Pretty print a threshold matrix set
 
         :param format_type: formating options (Standard, Percent)
         :type format_type: str
@@ -498,7 +568,7 @@ class ConditionalTransitionMatrix(TransitionMatrixSet):
         """
 
         print("State ", state)
-        if state == None:
+        if state is None:
             for k in range(self.T.shape[2]):
                 entry = np.around(self.T[:, :, k], accuracy)
                 for s_in in range(entry.shape[0]):
@@ -523,8 +593,7 @@ class ConditionalTransitionMatrix(TransitionMatrixSet):
                 print('')
 
     def fit(self, AR_Model, Scenario, rho, ri):
-        """
-        Calculate conditional transition rates given thresholds and stochastic model
+        """Calculate conditional transition rates given thresholds and stochastic model
 
 
         """
@@ -540,7 +609,7 @@ class ConditionalTransitionMatrix(TransitionMatrixSet):
         x_0 = AR_Model['Initial Conditions'][0]
 
         # Temporal scale
-        # TODO validate arbitrary timestep
+        # TODO(validate arbitrary timestep)
         # dt = 1.0
         dt2 = 1.0 - rho * rho
         dt_root = np.sqrt(dt2)
@@ -651,6 +720,7 @@ class ConditionalTransitionMatrix(TransitionMatrixSet):
                         self.T[ri, rf, k] = integral
 
     def plot_densities(self, period=None, state=0):
+        """Plot densities."""
         if period is not None:
             k = period
             ri = state

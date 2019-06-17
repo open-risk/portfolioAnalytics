@@ -1,8 +1,8 @@
 # encoding: utf-8
 
-# (c) 2017-2018 Open Risk (https://www.openriskmanagement.com)
+# (c) 2017-2019 Open Risk (https://www.openriskmanagement.com)
 #
-# TransitionMatrix is licensed under the Apache 2.0 license a copy of which is included
+# portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
 # third-party software included in this distribution. You may not use this file except in
 # compliance with the License.
@@ -13,15 +13,11 @@
 # limitations under the License.
 
 
-""" portfolioAnalytics - Python package for statistical analysis and visualization of state space transition events """
+"""portfolioAnalytics - Python package for the computation of semi-analytically tractable portfolio models."""
 
 import os
-from .model import *
-from .estimators import *
-from .utils import *
-from .thresholds import *
 
-__version__ = '0.2.0'
+__version__ = '0.3.0'
 
 package_name = 'portfolioAnalytics'
 module_path = os.path.dirname(__file__)
