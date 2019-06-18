@@ -13,9 +13,7 @@
 # limitations under the License.
 
 
-""" Example of calculating thresholds
-
-"""
+"""Example of calculating thresholds."""
 
 import transitionMatrix as tm
 from transitionMatrix.predefined import Generic

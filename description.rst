@@ -10,7 +10,7 @@ models
 * Mathematical Documentation: `Open Risk Manual <https://www.openriskmanual.org/wiki/Transition_Matrix>`_
 * Training: `Open Risk Academy <https://www.openriskacademy.com/login/index.php>`_
 * Development Website: `Github <https://github.com/open-risk/portfolioAnalytics>`_
-* Discussion: `Discord`_
+
 
 Functionality
 -------------
@@ -71,7 +71,7 @@ Dependencies
 -----------------
 
 - portfolioAnalytics requires Python 3
-- the thresholds module depends on the transitionMatrix library
+- the thresholds module depends on the Open Risk transitionMatrix and correlationMatrix libraries
 - It depends on numerical and data processing Python libraries (Numpy, Scipy, Pandas)
 - The Visualization API depends on Matplotlib
 - The precise dependencies are listed in the requirements.txt file.

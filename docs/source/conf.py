@@ -11,7 +11,10 @@
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#
+
+# portfolioAnalytics/docs/source/conf.py
+# portfolioAnalytics/examples
+# portfolioAnalytics/portfolioAnalytics
 
 import sys
 import os
@@ -19,7 +22,7 @@ import matplotlib
 matplotlib.use('agg')
 
 sys.path.insert(0, os.path.abspath('../../'))
-sys.path.insert(0, os.path.abspath('../../thresholds'))
+sys.path.insert(0, os.path.abspath('../../examples/python'))
 
 autodoc_mock_imports = ["transitionMatrix"]
 
