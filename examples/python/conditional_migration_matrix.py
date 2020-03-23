@@ -24,7 +24,7 @@ import numpy as np
 import transitionMatrix as tm
 
 import portfolioAnalytics as pal
-from portfolioAnalytics.thresholds.model import ThresholdSet
+from portfolioAnalytics.thresholds.model import ThresholdSet, ConditionalTransitionMatrix
 from portfolioAnalytics.thresholds.settings import AR_Model
 from portfolioAnalytics import source_path
 dataset_path = source_path + "datasets/"
@@ -55,7 +55,7 @@ ri = 3
 
 # Initialize a conditional migration matrix with the given thresholds
 
-Q = pal.ConditionalTransitionMatrix(thresholds=As)
+Q = ConditionalTransitionMatrix(thresholds=As)
 
 # # Q.print()
 #

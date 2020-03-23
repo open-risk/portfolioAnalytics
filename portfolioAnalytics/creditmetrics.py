@@ -15,9 +15,8 @@
 
 import math
 
-from scipy import stats
-
 from portfolioAnalytics.utils import bivariatenormal as bv
+from scipy import stats
 
 """Implement Credit Metrics style variance calculations."""
 
@@ -33,15 +32,15 @@ def Ninv(x):
 
 def variance(portfolio, correlation, loadings):
     """Variance calculation."""
-    n = len(portfolio)
+    n = portfolio.psize
     variance = 0.0
     name_var = 0.0
 
     # Portfolio Variance du to correlation
     for i in range(n):
         for j in range(i):
-            p1 = portfolio.pd[i]
-            p2 = portfolio.pd[j]
+            p1 = portfolio.rating[i]
+            p2 = portfolio.rating[j]
             a1 = Ninv(p1)
             a2 = Ninv(p2)
             Omega = correlation[portfolio.factor[i], portfolio.factor[j]]
@@ -52,7 +51,7 @@ def variance(portfolio, correlation, loadings):
 
     # Idiosyncratic Portfolio Variance due to name concentration
     for i in range(n - 1):
-        p1 = portfolio.pd[i]
+        p1 = portfolio.rating[i]
         name_var += portfolio.exposure[i] * portfolio.exposure[i] * (p1 - p1 * p1)
 
     return 2 * variance + name_var
@@ -60,7 +59,7 @@ def variance(portfolio, correlation, loadings):
 
 def creditmetrics_el(portfolio, correlation, loadings):
     """Expected Loss Calculation."""
-    n = len(portfolio)
+    n = portfolio.psize
     el = 0.0
     print(portfolio)
     for entry in portfolio:

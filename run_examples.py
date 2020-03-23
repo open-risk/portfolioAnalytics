@@ -17,7 +17,9 @@
 from portfolioAnalytics import source_path
 
 examples_path = source_path + "examples/python/"
-filelist = ['calculate_variance', 'calculate_thresholds', 'portfolio_model', 'validate_thresholds', 'visualize_thresholds']
+filelist = ['calculate_variance']
+# filelist = ['loss_distributions', 'calculate_variance', 'calculate_thresholds', 'portfolio_model', 'validate_thresholds', 'visualize_thresholds']
+
 
 if __name__ == '__main__':
 

@@ -3,6 +3,11 @@ ChangeLog
 
 PLEASE NOTE THAT THE API IS STILL VERY UNSTABLE AS MORE USE CASES / FEATURES ARE ADDED REGULARLY
 
+v0.3.1 (23-03-2020)
+-------------------
+* Improved the documentation of the vasicek module
+* Fixed the broken API of the variance examples
+
 v0.3.0 (17-06-2019)
 -------------------
 * Expanding sphinx documentation to cover all classes function
