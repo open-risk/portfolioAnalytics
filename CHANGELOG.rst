@@ -3,6 +3,10 @@ ChangeLog
 
 PLEASE NOTE THAT THE API IS STILL VERY UNSTABLE AS MORE USE CASES / FEATURES ARE ADDED REGULARLY
 
+v0.3.2 (XX-XX-2022)
+-------------------
+* release on PyPI
+
 v0.3.1 (23-03-2020)
 -------------------
 * Improved the documentation of the vasicek module
@@ -16,16 +20,13 @@ v0.2.1 (04-04-2019)
 -------------------
 * Including credit metrics style variance calculation
 
-
 v0.2.0 (29-03-2019)
 -------------------
 * Refactoring to include threshold model functionality (formerly with transitionMatrix library)
 
-
 v0.1.1 (11-07-2017)
 -------------------
 * Training: Notebook examples
-
 
 v0.1.0 (16-04-2017)
 -------------------

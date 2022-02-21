@@ -1,5 +1,5 @@
 # encoding: utf-8
-# (c) 2014-2019 Open Risk (https://www.openriskmanagement.com)
+# (c) 2017-2022 Open Risk (https://www.openriskmanagement.com)
 #
 # portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
@@ -15,13 +15,6 @@
 
 See `Vasicek Distribution <https://www.openriskmanual.org/wiki/Vasicek_Distribution>`_
 
-* vasicek_base_ implements a finite homogeneous pool
-* vasicek_base_el_ implements the expected loss for the vasicek_base case
-* vasicek_base_ul_ implements the standard deviation for the vasicek_base case
-* vasicek_lim_ implements the limiting case for large N
-* vasicek_lim_el_ implements the expected loss for the vasicek_lim case
-* vasicek_lim_ul_ implements the standard deviation for the vasicek_lim case
-* vasicek_lim_q_ implements the quantile for the vasicek_lim case
 
 """
 
@@ -72,7 +65,7 @@ def vasicek_base_el(N, p, rho):
 
 
 def vasicek_base_ul(N, p, rho):
-    """Unexpected Loss for the Vasicek Base distribution.
+    """Unexpected Loss (Standard Deviation) for the Vasicek Base distribution.
 
     :param N: The number of entities in the portfolio
     :param p: The probability of default

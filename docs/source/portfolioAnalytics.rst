@@ -1,12 +1,15 @@
 portfolioAnalytics Package
 ============================
 
-.. automodule:: portfolioAnalytics
+The core module
+
+.. automodule:: portfolioAnalytics.model
     :noindex:
 
 
-Subpackages
------------
+
+portfolioAnalytics Subpackages
+==============================
 
 .. toctree::
 

@@ -1,20 +1,22 @@
-.. portfolioAnalytics documentation master file, created by
-   sphinx-quickstart on Thu May  3 17:51:16 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. portfolioAnalytics documentation master file
 
 portfolioAnalytics Documentation
 ================================
 
+.. image:: ../../examples/Thresholds.png
+
+**NB: portfolioAnalytics is still in alpha release / active development. If you encounter issues please raise them in our github repository**
+
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
    :caption: Contents:
 
    description
-   usage
+   examples
    modules
-   changelog
+   testing
    roadmap
+   changelog
 
 Indices and tables
 ==================

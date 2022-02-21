@@ -4,45 +4,75 @@ portfolioAnalytics.vasicek subpackage
 Functions
 ----------
 
-.. automodule:: portfolioAnalytics.vasicek
-    :members:
-    :undoc-members:
-    :show-inheritance:
+The Vasicek subpackage implements currently the following:
+
+* vasicek_base implements a finite homogeneous pool
+* vasicek_base_el implements the expected loss for the vasicek_base case
+* vasicek_base_ul implements the standard deviation for the vasicek_base case
+* vasicek_lim implements the limiting case for large N
+* vasicek_lim_el implements the expected loss for the vasicek_lim case
+* vasicek_lim_ul implements the standard deviation for the vasicek_lim case
+* vasicek_lim_q implements the quantile for the vasicek_lim case
+
 
 Vasicek Base Distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: vasicek_base
+.. automodule:: portfolioAnalytics.vasicek.vasicek_base
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Vasicek Base Distribution Expected Loss
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: vasicek_base_el
+.. automodule:: portfolioAnalytics.vasicek.vasicek_base_el
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Vasicek Base Distribution Unexpected Loss
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: vasicek_base_ul
+.. automodule:: portfolioAnalytics.vasicek.vasicek_base_ul
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
 Vasicek Limit Distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: vasicek_lim
+.. automodule:: portfolioAnalytics.vasicek.vasicek_lim
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
 Vasicek Limit Distribution Expected Loss
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: vasicek_lim_el
+.. automodule:: portfolioAnalytics.vasicek.vasicek_lim_el
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Vasicek Limit Distribution Unexpected Loss
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: vasicek_lim_ul
+.. automodule:: portfolioAnalytics.vasicek.vasicek_lim_ul
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
 Vasicek Limit Distribution Quantile Loss
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: vasicek_lim_q
+.. automodule:: portfolioAnalytics.vasicek.vasicek_lim_q
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
 
 

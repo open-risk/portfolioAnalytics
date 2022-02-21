@@ -2,7 +2,7 @@
 
 """This module is part of the portfolioAnalytics package."""
 
-# (c) 2017-2019 Open Risk (https://www.openriskmanagement.com)
+# (c) 2017-2022 Open Risk (https://www.openriskmanagement.com)
 #
 # portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
@@ -15,15 +15,14 @@
 # limitations under the License.
 
 import json
+
 import portfolioAnalytics.vasicek as va
-from portfolioAnalytics.utils.portfolio import Portfolio
 
 
 class LossDistribution(object):
     """The Loss Distribution object exposes the core functionality of the portfolioAnalytics library.a
 
-    Depending on the selected method, it produces estimates of the moments of loss distribution, or point
-    estimates for a given stress scenario.
+    Depending on the selected method, it produces estimates of the moments of loss distribution, or point estimates for a given stress scenario.
 
 
     .. Todo:: Something to do
@@ -67,13 +66,18 @@ class LossDistribution(object):
                 self.stddev.append(va.vasicek_base_ul(N, p, asset_correlation))
 
     def to_json(self, json_file=None, accuracy=5):
-        """Serialize to JSON."""
+        """Serialize to JSON.
+
+
+        """
         something = []
         serialized = json.dumps(something, indent=2, separators=(',', ': '))
         return serialized
 
     def from_json(self, json_file):
-        """Read from JSON."""
+        """Read from JSON.
+
+        """
         pass
 
     def print_moments(self, format_type='Standard', accuracy=2):
@@ -104,5 +108,7 @@ class LossDistribution(object):
 
 
     def plot(self, rating):
-        """Plot the loss distributions."""
+        """Plot the loss distributions.
+
+        """
         pass

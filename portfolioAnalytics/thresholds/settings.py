@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2017-2019 Open Risk (https://www.openriskmanagement.com)
+# (c) 2017-2022 Open Risk (https://www.openriskmanagement.com)
 #
 # portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
@@ -12,7 +12,9 @@
 # either express or implied. See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Integration Settings."""
+"""Integration Settings.
+
+"""
 
 GRID_POINTS = 2000
 PRECISION = 1.e-8

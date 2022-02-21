@@ -2,40 +2,42 @@ portfolioAnalytics.creditmetrics subpackage
 ==================================================
 
 
-CreditMetrics Portfolio Models Library
-----------------------------------------------
+CreditMetrics Style Functions
+----------------------------------
 
-A python library that provides semi-analytical functions useful in the context credit portfolio models
+Inverse normal function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-.. automodule:: portfolioAnalytics.creditmetrics
+.. automodule:: portfolioAnalytics.creditmetrics.Ninv
     :members:
     :undoc-members:
     :show-inheritance:
 
 
-Functions
-----------
-
-Inverse normal function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. autofunction:: Ninv
-
 Variance calculation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: variance
+.. automodule:: portfolioAnalytics.creditmetrics.variance
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Expected Loss Calculation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: creditmetrics_el
+.. automodule:: portfolioAnalytics.creditmetrics.creditmetrics_el
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
-Loss Volatility
+Loss Volatility (Unexpected Loss)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: creditmetrics_ul
+.. automodule:: portfolioAnalytics.creditmetrics.creditmetrics_ul
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
 
 

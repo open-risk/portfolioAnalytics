@@ -2,7 +2,7 @@
 
 """This module is part of the portfolioAnalytics package."""
 
-# (c) 2017-2019 Open Risk (https://www.openriskmanagement.com)
+# (c) 2017-2022 Open Risk (https://www.openriskmanagement.com)
 #
 # portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
@@ -61,6 +61,7 @@ class ThresholdSet(object):
     """The Threshold set object stores a multiperiod migration/default threshold structure as a numpy array.
 
     .. Todo:: Separate integration method from transition data
+
     """
 
     def __init__(self, ratings=None, periods=None, TMSet=None, json_file=None):
@@ -120,12 +121,11 @@ class ThresholdSet(object):
             raise ValueError
 
     def fit(self, AR_Model, ri, dt=1.0):
-        """Fit Thresholds given autoregressive model and transition matrix given the initial state ri
+        """ Fit Thresholds given autoregressive model and transition matrix given the initial state ri.
 
-        .. note:: The threshold corresponding to the starting rating is set by convention to NaN.
-        The threshold corresponding to a defaulted state is set by convention to - Infinity
-        These values are stored in memory as numpy NaN and Infinity value respectively
-        They are serialized as strings "nan" and "-inf" respectively
+        .. note::
+
+          The threshold corresponding to the starting rating is set by convention to NaN. The threshold corresponding to a defaulted state is set by convention to - Infinity. These values are stored in memory as numpy NaN and Infinity value respectively. They are serialized as strings "nan" and "-inf" respectively.
 
         """
 
@@ -509,10 +509,10 @@ class ThresholdSet(object):
             entry = np.around(self.A[:, :, k], accuracy)
             for s_in in range(entry.shape[0]):
                 for s_out in range(entry.shape[1]):
-                    if format_type is 'Standard':
+                    if format_type == 'Standard':
                         format_string = "{0:." + str(accuracy) + "f}"
                         print(format_string.format(entry[s_in, s_out]) + ' ', end='')
-                    elif format_type is 'Percent':
+                    elif format_type == 'Percent':
                         print("{0:.2f}%".format(100 * entry[s_in, s_out]) + ' ', end='')
                 print('')
             print('')
@@ -573,10 +573,10 @@ class ConditionalTransitionMatrix(TransitionMatrixSet):
                 entry = np.around(self.T[:, :, k], accuracy)
                 for s_in in range(entry.shape[0]):
                     for s_out in range(entry.shape[1]):
-                        if format_type is 'Standard':
+                        if format_type == 'Standard':
                             format_string = "{0:." + str(accuracy) + "f}"
                             print(format_string.format(entry[s_in, s_out]) + ' ', end='')
-                        elif format_type is 'Percent':
+                        elif format_type == 'Percent':
                             print("{0:.2f}%".format(100 * entry[s_in, s_out]) + ' ', end='')
                     print('')
                 print('')
@@ -585,10 +585,10 @@ class ConditionalTransitionMatrix(TransitionMatrixSet):
                 entry = np.around(self.T[:, :, k], accuracy)
                 # print(entry)
                 for s_out in range(entry.shape[1]):
-                    if format_type is 'Standard':
+                    if format_type == 'Standard':
                         format_string = "{0:." + str(accuracy) + "f}"
                         print(format_string.format(entry[state, s_out]) + ' ', end='')
-                    elif format_type is 'Percent':
+                    elif format_type == 'Percent':
                         print("{0:.2f}%".format(100 * entry[state, s_out]) + ' ', end='')
                 print('')
 

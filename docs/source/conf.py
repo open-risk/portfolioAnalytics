@@ -19,6 +19,7 @@
 import sys
 import os
 import matplotlib
+
 matplotlib.use('agg')
 
 sys.path.insert(0, os.path.abspath('../../'))
@@ -39,7 +40,6 @@ version = ''
 # The full version, including alpha/beta/rc tags
 release = __version__
 
-
 # -- General configuration ---------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -54,6 +54,7 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.coverage',
     'sphinx.ext.imgmath',
+    'sphinx.ext.viewcode',
     'sphinx.ext.autosectionlabel',
     'sphinx.ext.githubpages',
     'sphinx.ext.todo',
@@ -87,7 +88,6 @@ exclude_patterns = []
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
-
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -102,13 +102,13 @@ html_theme = "sphinx_rtd_theme"
 # documentation.
 #
 # html_theme_options = {}
+
 html_theme_options = {
-    'canonical_url': '',
     'analytics_id': '',
-    'logo_only': False,
+    'logo_only': True,
     'display_version': True,
     'prev_next_buttons_location': 'bottom',
-    'style_external_links': False,
+    'style_external_links': True,
     # Toc options
     'collapse_navigation': True,
     'sticky_navigation': True,
@@ -116,7 +116,6 @@ html_theme_options = {
     'includehidden': True,
     'titles_only': False
 }
-
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -133,12 +132,12 @@ html_static_path = ['_static']
 #
 # html_sidebars = {}
 
+html_css_files = ['custom.css']
 
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'portfolioAnalyticsdoc'
-
 
 # -- Options for LaTeX output ------------------------------------------------
 
@@ -168,7 +167,6 @@ latex_documents = [
      'Open Risk', 'manual'),
 ]
 
-
 # -- Options for manual page output ------------------------------------------
 
 # One entry per manual page. List of tuples
@@ -177,7 +175,6 @@ man_pages = [
     (master_doc, 'portfolioAnalytics', 'portfolioAnalytics Documentation',
      [author], 1)
 ]
-
 
 # -- Options for Texinfo output ----------------------------------------------
 
@@ -190,11 +187,10 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
-
 # -- Extension configuration -------------------------------------------------
 
 extensions.append('sphinx.ext.todo')
-todo_include_todos=True
+todo_include_todos = True
 
 # extensions.append('sphinx_automodapi.automodapi')
 # numpydoc_show_class_members = False

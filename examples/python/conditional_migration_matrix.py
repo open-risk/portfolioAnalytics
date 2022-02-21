@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2017-2019 Open Risk, all rights reserved (https://www.openriskmanagement.com)
+# (c) 2017-2022 Open Risk, all rights reserved (https://www.openriskmanagement.com)
 #
 # portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
@@ -21,12 +21,11 @@ a given AR process
 
 """
 import numpy as np
-import transitionMatrix as tm
 
-import portfolioAnalytics as pal
+from portfolioAnalytics import source_path
 from portfolioAnalytics.thresholds.model import ThresholdSet, ConditionalTransitionMatrix
 from portfolioAnalytics.thresholds.settings import AR_Model
-from portfolioAnalytics import source_path
+
 dataset_path = source_path + "datasets/"
 
 # A Generic matrix with 7 non-absorbing and one absorbing state

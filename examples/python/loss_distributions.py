@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2014-2019 Open Risk (https://www.openriskmanagement.com), all rights reserved
+# (c) 2017-2022 Open Risk (https://www.openriskmanagement.com), all rights reserved
 #
 # PortfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of PortfolioAnalytics. This is notwithstanding any licenses of
@@ -20,6 +20,7 @@ from portfolioAnalytics.model import LossDistribution
 from portfolioAnalytics.utils.portfolio import Portfolio
 
 # Load the portfolio data
+print(dataset_path)
 json_data = open(dataset_path + '/portfolio_data1.json').read()
 data = json.loads(json_data)
 

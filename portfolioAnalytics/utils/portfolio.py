@@ -53,9 +53,12 @@ class Portfolio(object):
         """Load portfolio data from JSON object.
 
         The data format for the input json object is a list of dictionaries as follows
-        [{"ID":"1","PD":"0.015","EAD":"40","FACTOR":0},
-          ...
-         {"ID":"2","PD":"0.286","EAD":"20","FACTOR":0}]
+
+        .. code-block:: python
+
+            [{"ID":"1","PD":"0.015","EAD":"40","FACTOR":0},
+              ...
+             {"ID":"2","PD":"0.286","EAD":"20","FACTOR":0}]
 
         """
         self.psize = len(data)

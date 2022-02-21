@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2017-2019 Open Risk, all rights reserved
+# (c) 2017-2022 Open Risk, all rights reserved
 #
 # TransitionMatrix is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
@@ -15,27 +15,16 @@
 
 import unittest
 
-import transitionMatrix as tm
-from transitionMatrix.predefined import Minimal
-from transitionMatrix import source_path, dataset_path
-
 ACCURATE_DIGITS = 7
 
 
 class TestDatasets(unittest.TestCase):
     '''
-    Load in-memory matrices
+    Load in-memory datasets
     '''
 
-    def test_minimal_matrix(self):
-        a = tm.TransitionMatrix(values=Minimal)
-        a.validate()
-        self.assertEqual(a.dimension, 3)
-
-    def test_matrix_set_load_csv(self):
-        a = tm.TransitionMatrixSet(csv_file=dataset_path + "sp_1981-2016.csv", temporal_type='Cumulative')
-        a.validate()
-        self.assertEqual(a.periods, [1, 2, 3, 5, 7, 10, 15, 20])
+    def test_minimal(self):
+        pass
 
 
 if __name__ == "__main__":

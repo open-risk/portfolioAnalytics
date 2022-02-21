@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2017-2019 Open Risk, all rights reserved (https://www.openriskmanagement.com)
+# (c) 2017-2022 Open Risk, all rights reserved (https://www.openriskmanagement.com)
 #
 # portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 from matplotlib import collections as mc
 
 import transitionMatrix as tm
-from transitionMatrix.predefined import Generic
+from transitionMatrix.creditratings.predefined import Generic
 from portfolioAnalytics.thresholds.model import ThresholdSet
 from portfolioAnalytics.thresholds.settings import AR_Model
 

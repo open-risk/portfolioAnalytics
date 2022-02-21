@@ -3,7 +3,7 @@
 
 """Implementation of the bivariate normal function."""
 
-# (c) 2017-2019 Open Risk (https://www.openriskmanagement.com)
+# (c) 2017-2022 Open Risk (https://www.openriskmanagement.com)
 #
 # portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
@@ -30,38 +30,41 @@ def N(x):
 
 
 def BivariateNormalDistribution(a, b, rho):
-    """Bivariate Normal Distribution."""
-    # based on Z. Drezner, "Computation of the bivariate normal integral", Mathematics of Computation 32, pp. 277-279, 1978.
-    # uses 8-point Gaussian quadrature
+    """Bivariate Normal Distribution.
 
+    based on Z. Drezner, "Computation of the bivariate normal integral",
+    Mathematics of Computation 32, pp. 277-279, 1978.
+    uses 8-point Gaussian quadrature
+
+    """
     Epsilon = 1e-12
 
-    if (rho > 1 - Epsilon):
-        if (a < b):
+    if rho > 1 - Epsilon:
+        if a < b:
             value = N(a)
         else:
             value = N(b)
         return value
 
-    if (rho < -(1 - Epsilon)):
-        if (a < -b):
+    if rho < -(1 - Epsilon):
+        if a < -b:
             value = 0
         else:
             value = N(a) - N(-b)
         return value
 
-    if (a <= 0 and b <= 0 and rho <= 0):
+    if a <= 0 and b <= 0 and rho <= 0:
         value = Phi_Sum(a, b, rho)
-    elif (a <= 0 and b >= 0 and rho >= 0):
+    elif a <= 0 <= b and rho >= 0:
         value = N(a) - Phi_Sum(a, -b, -rho)
-    elif (a >= 0 and b <= 0 and rho >= 0):
+    elif a >= 0 and b <= 0 and rho >= 0:
         value = N(b) - Phi_Sum(-a, b, -rho)
-    elif (a >= 0 and b >= 0 and rho <= 0):
+    elif a >= 0 and b >= 0 and rho <= 0:
         value = N(a) + N(b) - 1 + Phi_Sum(-a, -b, rho)
     else:
         value = BivariateNormalDistribution(a, 0, rhoc(a, b, rho))
         value = value + BivariateNormalDistribution(b, 0, rhoc(b, a, rho))
-        if ((a > 0 and b < 0) or (a < 0 and b > 0)):
+        if (a > 0 and b < 0) or (a < 0 and b > 0):
             value = value - 0.5
     return value
 
@@ -115,6 +118,6 @@ def Phi_Sum(a, b, rho):
 def rhoc(a, b, rho):
     """Rho_c Helper Function."""
     x = 1.0
-    if (a < 0):
+    if a < 0:
         x = -1.0
     return x * (rho * a - b) / math.sqrt(a * a - 2 * rho * a * b + b * b)

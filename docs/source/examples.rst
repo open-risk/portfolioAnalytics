@@ -1,7 +1,7 @@
 Examples
 ========
 
-The examples directory includes python scripts and jupyter notebooks to help you get started
+The portfolioAnalytics packages offers quite a lot of functionality. Here we break down some of the main workflows for those getting started. The examples directory includes python scripts and jupyter notebooks to help you get started
 
 - Generating loss distributions analytically
 - Estimating thresholds given a multi-period transition matrix set
@@ -10,8 +10,7 @@ The examples directory includes python scripts and jupyter notebooks to help you
 Python Scripts
 -------------------------------------------
 
-Located in examples/python (For testing purposes all examples can be run using the run_examples.py script
-located in the root directory)
+Located in examples/python (For testing purposes all examples can be run using the run_examples.py script located in the root directory)
 
 .. automodule:: examples.python
     :noindex:
@@ -30,6 +29,11 @@ located in the root directory)
 Jupyter Notebooks
 -------------------------------------------
 
-* Adjust_NotRated_State.ipynb
-* Matrix_Operations.ipynb
+* Examples.ipynb
 * Portfolio_Examples.ipynb
+
+
+Open Risk Academy Scripts
+-------------------------------------------
+
+TODO
