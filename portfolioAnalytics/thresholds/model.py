@@ -32,6 +32,7 @@ from portfolioAnalytics.thresholds.settings import VERBOSE, GRAPHS
 
 matplotlib.use("agg")
 
+
 # Calculate survival distribution function at period k and point x
 # Convolution of last period survival function with process one step transition density
 def integrate_g(ff, x, an, dx, dt, mu, phi_1):
