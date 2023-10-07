@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2017-2022 Open Risk, all rights reserved
+# (c) 2017-2023 Open Risk, all rights reserved
 #
 # PortfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of PortfolioAnalytics. This is notwithstanding any licenses of
@@ -18,9 +18,9 @@
 import transitionMatrix as tm
 from transitionMatrix.creditratings.predefined import Generic
 
+from portfolioAnalytics import dataset_path
 from portfolioAnalytics.thresholds.model import ThresholdSet
 from portfolioAnalytics.thresholds.settings import AR_Model
-from portfolioAnalytics import dataset_path
 
 # Example 1: Typical Annual Credit Rating Transition Matrix
 # Example 2: Monthly Transition Matrix
@@ -57,7 +57,7 @@ As = ThresholdSet(TMSet=T)
 print("> Calculate thresholds per initial rating state")
 for ri in range(0, Ratings):
     print("Initial Rating: ", ri)
-    As.fit(AR_Model, ri, dt=1.0/12.0)
+    As.fit(AR_Model, ri, dt=1.0 / 12.0)
 As.to_json(json_file="monthly_thresholds.json")
 
 # Display the calculated thresholds

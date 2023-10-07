@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2017-2022 Open Risk (https://www.openriskmanagement.com)
+# (c) 2017-2023 Open Risk (https://www.openriskmanagement.com)
 #
 # portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of portfolioAnalytics. This is notwithstanding any licenses of
@@ -17,15 +17,15 @@ from codecs import open
 
 from setuptools import setup
 
-__version__ = '0.3'
+__version__ = '0.4'
 
 ver = __version__
 
 long_descr = open('docs/source/description.rst', 'r', encoding='utf8').read()
 
-setup(name='portfolioAnalytics',
+setup(name='creditPortfolioAnalytics',
       version=ver,
-      description='A Python powered library for calculating semi-analytic portfolio loss metrics',
+      description='A Python powered library for calculating semi-analytic credit portfolio loss metrics',
       long_description=long_descr,
       long_description_content_type='text/x-rst',
       author='Open Risk',
@@ -51,9 +51,7 @@ setup(name='portfolioAnalytics',
           'License :: OSI Approved :: Apache Software License',
           'Operating System :: OS Independent',
           'Programming Language :: Python :: 3 :: Only',
-          'Programming Language :: Python :: 3.3',
-          'Programming Language :: Python :: 3.4',
-          'Programming Language :: Python :: 3.5',
+          'Programming Language :: Python :: 3.10',
           'Topic :: Scientific/Engineering',
           'Topic :: Scientific/Engineering :: Information Analysis'
       ]

@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2017-2022 Open Risk (https://www.openriskmanagement.com), all rights reserved
+# (c) 2017-2023 Open Risk (https://www.openriskmanagement.com), all rights reserved
 #
 # PortfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of PortfolioAnalytics. This is notwithstanding any licenses of
@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import json
-import sys
 
 from portfolioAnalytics import dataset_path
 from portfolioAnalytics.model import LossDistribution
@@ -33,5 +32,3 @@ P.loadjson(data)
 V = LossDistribution()
 V.calculate(method='Finite_Vasicek', asset_correlation=0.4, portfolio=P)
 V.print_moments()
-
-

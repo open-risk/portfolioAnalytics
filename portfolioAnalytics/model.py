@@ -2,7 +2,7 @@
 
 """This module is part of the portfolioAnalytics package."""
 
-# (c) 2017-2022 Open Risk (https://www.openriskmanagement.com)
+# (c) 2017-2023 Open Risk (https://www.openriskmanagement.com)
 #
 # portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
@@ -105,7 +105,6 @@ class LossDistribution(object):
             print('{0:.4f} {1:.4f} {2:.4f} {3:.4f} {4:.4f}'.format(el, ul, 0, 0, 0))
             print('..............................................................................')
         print('==============================================================================')
-
 
     def plot(self, rating):
         """Plot the loss distributions.

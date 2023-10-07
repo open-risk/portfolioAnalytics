@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2017-2022 Open Risk, all rights reserved (https://www.openriskmanagement.com)
+# (c) 2017-2023 Open Risk, all rights reserved (https://www.openriskmanagement.com)
 #
 # portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
@@ -39,7 +39,6 @@ Generic = [
     [0.0001, 0.0004, 0.0057, 0.0134, 0.0539, 0.8114, 0.0492, 0.0659],
     [1e-05, 0.0002, 0.0029, 0.0058, 0.0155, 0.1054, 0.52879, 0.3414],
     [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]]
-
 
 # Initialize a threshold set from file
 As = ThresholdSet(json_file=dataset_path + 'generic_thresholds.json')

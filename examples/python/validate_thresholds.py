@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2017-2022 Open Risk, all rights reserved
+# (c) 2017-2023 Open Risk, all rights reserved
 #
 # PortfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of PortfolioAnalytics. This is notwithstanding any licenses of
@@ -22,16 +22,17 @@ are not stored. They have to be recomputed for validation purposes
 
 import transitionMatrix as tm
 from transitionMatrix.creditratings.predefined import Generic
+
+from portfolioAnalytics import source_path
 from portfolioAnalytics.thresholds.model import ThresholdSet
 from portfolioAnalytics.thresholds.settings import AR_Model
-from portfolioAnalytics import source_path
+
 dataset_path = source_path + "datasets/"
 
 # Example 1: Typical Annual Credit Rating Transition Matrix
 # Example 2: Monthly Transition Matrix
 
 example = 2
-
 
 if example == 1:
     M = tm.TransitionMatrix(values=Generic)
@@ -40,7 +41,7 @@ if example == 1:
     M.validate()
 
     # The size of the rating scale
-    Ratings = M .dimension
+    Ratings = M.dimension
 
     # The Default (absorbing state)
     Default = Ratings - 1

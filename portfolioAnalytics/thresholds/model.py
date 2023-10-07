@@ -2,7 +2,7 @@
 
 """This module is part of the portfolioAnalytics package."""
 
-# (c) 2017-2022 Open Risk (https://www.openriskmanagement.com)
+# (c) 2017-2023 Open Risk (https://www.openriskmanagement.com)
 #
 # portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
@@ -31,6 +31,7 @@ from portfolioAnalytics.thresholds.settings import VERBOSE, GRAPHS
 # choose matplotlib backend
 
 matplotlib.use("agg")
+
 
 # Calculate survival distribution function at period k and point x
 # Convolution of last period survival function with process one step transition density
