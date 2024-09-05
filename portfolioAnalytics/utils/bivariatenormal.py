@@ -3,7 +3,7 @@
 
 """Implementation of the bivariate normal function."""
 
-# (c) 2017-2023 Open Risk (https://www.openriskmanagement.com)
+# (c) 2017-2024 Open Risk (https://www.openriskmanagement.com)
 #
 # portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
