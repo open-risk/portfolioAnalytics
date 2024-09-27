@@ -3,7 +3,7 @@
 # (c) 2017-2024 Open Risk (https://www.openriskmanagement.com)
 #
 # portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
-# in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
+# in the source distribution of portfolioAnalytics. This is notwithstanding any licenses of
 # third-party software included in this distribution. You may not use this file except in
 # compliance with the License.
 #
@@ -17,7 +17,7 @@
 
 import os
 
-__version__ = '0.3.0'
+__version__ = '0.4.0'
 
 package_name = 'portfolioAnalytics'
 module_path = os.path.dirname(__file__)

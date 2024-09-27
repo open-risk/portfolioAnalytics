@@ -1,8 +1,7 @@
 Examples of calculation thresholds
 ====================================
 
-Estimating thresholds given a multi-period transition matrix set. Example of using portfolioAnalytics to compute multi-period transition thresholds
-compatible with a given transition matrix.
+Estimating thresholds given a multi-period transition matrix set. Example of using portfolioAnalytics to compute multi-period transition thresholds compatible with a given transition matrix.
 
 
 Rating Transition Thresholds

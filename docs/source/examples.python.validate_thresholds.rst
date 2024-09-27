@@ -1,7 +1,7 @@
 Examples of validating transition thresholds
 ================================================
 
-The examples directory includes python scripts and jupyter notebooks to help you get started
+The examples directory includes Python scripts and Jupyter notebooks to help you get started
 
 - Generating loss distributions analytically
 - Estimating thresholds given a multi-period transition matrix set

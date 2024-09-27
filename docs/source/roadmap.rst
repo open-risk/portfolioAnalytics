@@ -1,21 +1,10 @@
 Roadmap
 =========================
 
-portfolioAnalytics aims to become the most intuitive and versatile tool to analyse discrete transition data.
-This roadmap lays out the general upcoming steps in this journey. The Todo List has some more concrete tasks that may have been already raised as issue son github.
+portfolioAnalytics aims to become the most intuitive and versatile tool to analyse analytic credit loss distribution.
 
+This roadmap lays out the general upcoming steps in this journey. The Todo List has some more concrete tasks that may have been already raised as an issue son github.
 
-0.3.X
---------------------------
-
-The 0.3.X family of releases will focus on rounding out a number of functionalities already introduced
-
-- Further documenting the existing functionality
-- Further tests, of both code and algorithms
-
-
-0.4.X
--------------------------
 
 Provide additional functions for default rate distributions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

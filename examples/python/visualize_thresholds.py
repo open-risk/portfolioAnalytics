@@ -3,7 +3,7 @@
 # (c) 2017-2024 Open Risk, all rights reserved (https://www.openriskmanagement.com)
 #
 # portfolioAnalytics is licensed under the Apache 2.0 license a copy of which is included
-# in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
+# in the source distribution of portfolioAnalytics. This is notwithstanding any licenses of
 # third-party software included in this distribution. You may not use this file except in
 # compliance with the License.
 #

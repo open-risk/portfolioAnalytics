@@ -43,16 +43,11 @@ Current Functions
 
 The Vasicek Base family produces finite pool loss probabilities and measures (EL, UL)
 
-The Vasicek Lim family produces asymptotic pool loss probabities and measures (EL, UL, Quantile)
+The Vasicek Lim family produces asymptotic pool loss probabilities and measures (EL, UL, Quantile)
 
 Limitations
 -------------
-The portfolioAnalytics library provides a range of powerful modelling functionalities that are
-are of relevance in real credit portfolio management activities. Yet achieving the tractability
-and usability of a semi-analytic calculation suite is not without some tradeoffs. Several
-simplifications are made (extensively documented in the Mathematical Documentation). Those
-simplifications imply that when using the portfolioAnalytics models to assess the
-risk in actual portfolios it is important to assess
+The portfolioAnalytics library provides a range of powerful modelling functionalities that are are of relevance in real credit portfolio management activities. Yet achieving the tractability and usability of a semi-analytic calculation suite is not without some tradeoffs. Several simplifications are made (extensively documented in the Mathematical Documentation). Those simplifications imply that when using the portfolioAnalytics models to assess the risk in actual portfolios it is important to assess
 
 
 Installation

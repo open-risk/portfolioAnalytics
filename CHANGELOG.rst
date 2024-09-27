@@ -3,9 +3,9 @@ ChangeLog
 
 PLEASE NOTE THAT THE API IS STILL VERY UNSTABLE AS MORE USE CASES / FEATURES ARE ADDED REGULARLY
 
-v0.3.2 (XX-XX-2023)
+v0.4.0 (21-02-2024)
 -------------------
-* release on PyPI
+* released on PyPI
 
 v0.3.1 (23-03-2020)
 -------------------
@@ -14,7 +14,7 @@ v0.3.1 (23-03-2020)
 
 v0.3.0 (17-06-2019)
 -------------------
-* Expanding sphinx documentation to cover all classes function
+* Expanding Sphinx documentation to cover all classes function
 
 v0.2.1 (04-04-2019)
 -------------------

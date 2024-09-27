@@ -25,14 +25,14 @@ matplotlib.use('agg')
 sys.path.insert(0, os.path.abspath('../../'))
 sys.path.insert(0, os.path.abspath('../../examples/python'))
 
-autodoc_mock_imports = ["transitionMatrix"]
+autodoc_mock_imports = ["portfolioAnalytics"]
 
-__version__ = '0.3.0'
+__version__ = '0.4.0'
 
 # -- Project information -----------------------------------------------------
 
 project = 'portfolioAnalytics'
-copyright = '2019, Open Risk'
+copyright = '2017 - 2024, Open Risk'
 author = 'Open Risk'
 
 # The short X.Y version

@@ -9,7 +9,7 @@ The library provides support for the Monte Carlo testing framework
 Dependencies: scipy, sympy
 
 ## Examples
-Check the jupyter notebook
+Check the jupyter notebooks
 
 ### Current Functions
 
@@ -23,33 +23,14 @@ Check the jupyter notebook
 
 The Vasicek Base family produces finite pool loss probabilities and measures (EL, UL)
 
-The Vasicek Lim family produces asymptotic pool loss probabities and measures (EL, UL, Quantile)
+The Vasicek Lim family produces asymptotic pool loss probabilities and measures (EL, UL, Quantile)
 
 ### Risk Manual
+
 Use the [manual](https://www.openriskmanual.org/wiki/Main_Page) for documentation of use cases
 
 ### Contributions
+
 Contributions are welcome. Check the TODO list for ideas of where to take this library next
 
-
-## Portfolio Analytics Library (PAT)
-***
-
-Set of semi-analytical functions for testing the accuracy of credit portfolio simulation models
-
-### Contributions
-***
-
-### Screenshot
-***
-<p align="center">
-  <img src="http://pictures.gabrielecirulli.com/2048-20140309-234100.png" alt="Screenshot"/>
-</p>
-
-
-### Contributing
-***
-
-### License
-***
 
