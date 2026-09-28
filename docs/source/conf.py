@@ -32,7 +32,7 @@ __version__ = '0.4.0'
 # -- Project information -----------------------------------------------------
 
 project = 'portfolioAnalytics'
-copyright = '2017 - 2024, Open Risk'
+copyright = '2017 - 2026, Open Risk'
 author = 'Open Risk'
 
 # The short X.Y version

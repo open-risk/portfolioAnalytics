@@ -113,7 +113,7 @@ File structure
 -----------------
 The distribution has the following structure:
 
-| portfolioAnalytics         The library source code
+| portfolioAnalytics       The library source code
 |    estimators            Estimator methods (TODO)
 |    utils                 Helper classes and methods
 |    thresholds            Algorithms for calibrating AR(n) process thresholds to input transition rates
